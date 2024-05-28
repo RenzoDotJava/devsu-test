@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { theme } from '@/styles'
 
@@ -18,12 +18,11 @@ export default Header
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: StatusBar.currentHeight,
     paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: theme.color.neutral.medium
+    borderBottomColor: theme.color.neutral.light
   },
   bank_button: {
     flexDirection: 'row',
@@ -34,9 +33,5 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSize['lg'],
     color: theme.color.primary.dark,
     fontWeight: 'bold'
-  },
-  back_button: {
-    position: 'absolute',
-    left: 16
   }
 })

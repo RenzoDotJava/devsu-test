@@ -6,16 +6,12 @@ type WrapperProps = {
 	children: React.ReactNode
 }
 
-type InputProps = {
-	placeholder?: string;
-	keyboardType?: 'default' | 'numeric';
-	value?: string;
-	error?: boolean;
-	onChangeText?: (text: string) => void;
-};
-
 type ProductRowProps = {
-	product: ProductInterface;
+	product: Product;
 	position: 'top' | 'middle' | 'bottom' | 'both';
 	onPress: () => void;
+}
+
+type DeleteProductSheetProps = BottomSheetProps & {
+	product: Product;
 }

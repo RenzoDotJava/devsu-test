@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { FlatList, StyleSheet } from 'react-native'
-import { Input, ProductRow, Wrapper } from '@/components'
 import { products } from 'mocks/products'
-import { ProductInterface } from '@/interfaces/product.interface'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useNavigation } from '@react-navigation/native'
+import { ProductRow, Wrapper } from '@/components'
+import { Button, Input } from '@/ui'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductList'>;
 
@@ -16,7 +16,7 @@ const ProductList = () => {
 
   const handleChangeQuery = (text: string) => setQuery(text)
 
-  const renderItem = ({ item, index }: { item: ProductInterface, index: number }) => {
+  const renderItem = ({ item, index }: { item: Product, index: number }) => {
     const position = filteredProducts.length === 1 ? 'both' : index === 0 ? 'top' : index === filteredProducts.length - 1 ? 'bottom' : 'middle'
 
     return <ProductRow product={item} position={position} onPress={() => navigation.navigate('ProductDetail')} />
@@ -31,6 +31,7 @@ const ProductList = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item, index }) => renderItem({ item, index })}
       />
+      <Button text="Agregar" variant='secondary' />
     </Wrapper>
   )
 }
@@ -40,5 +41,6 @@ export default ProductList
 const styles = StyleSheet.create({
   list: {
     marginTop: 36,
+    marginBottom: 24
   }
 });

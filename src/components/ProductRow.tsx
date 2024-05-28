@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderTopWidth: 1,
-    borderColor: theme.color.neutral.medium,
+    borderColor: theme.color.neutral.light,
     justifyContent: 'space-between',
     alignItems: 'center'
   },

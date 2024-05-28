@@ -16,13 +16,17 @@ export const theme = {
   },
   color: {
     primary: {
-      light: '#E9ECF3',
-      dark: '#40517B'
+      light: '#D1D6E2',
+      dark: '#42547F'
     },
+    secondary: '#FFDD00',
     neutral: {
-      light: '#FFFFFF',
-      medium: '#9F9FA2',
-      dark: '#000000'
-    }
+      lightest: '#FFFFFF',
+      light: '#9F9FA2',
+      medium: '#6D6D70',
+      dark: '#37373B',
+      darkest: '#000000'
+    },
+    error: '#D50707'
   }
 }

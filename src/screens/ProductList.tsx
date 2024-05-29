@@ -1,25 +1,38 @@
 import React, { useState } from 'react'
-import { FlatList, StyleSheet } from 'react-native'
-import { products } from 'mocks/products'
+import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useNavigation } from '@react-navigation/native'
-import { ProductRow, Wrapper } from '@/components'
+import { EmptyList, ProductRow, Wrapper } from '@/components'
 import { Button, Input } from '@/ui'
+import { useQuery } from '@tanstack/react-query'
+import { productService } from '@/services/product.service'
+import { useProduct } from '@/context/ProductContext'
+import { theme } from '@/styles'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductList'>;
 
 const ProductList = () => {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation<NavigationProp>()
+  const { products, setProducts } = useProduct()
   const [query, setQuery] = useState('')
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toLowerCase().includes(query.toLowerCase()))
+  const { isLoading, refetch } = useQuery({
+    queryKey: ['get_products'],
+    queryFn: async () => {
+      const data = await productService.getProducts()
+      setProducts(data)
+      return data
+    }
+  })
+
+  const filteredProducts = products.filter((product: Product) => product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toLowerCase().includes(query.toLowerCase()))
 
   const handleChangeQuery = (text: string) => setQuery(text)
 
   const renderItem = ({ item, index }: { item: Product, index: number }) => {
     const position = filteredProducts.length === 1 ? 'both' : index === 0 ? 'top' : index === filteredProducts.length - 1 ? 'bottom' : 'middle'
 
-    return <ProductRow product={item} position={position} onPress={() => navigation.navigate('ProductDetail')} />
+    return <ProductRow product={item} position={position} onPress={() => navigation.navigate('ProductDetail', { id: item.id })} />
   }
 
   return (
@@ -30,8 +43,17 @@ const ProductList = () => {
         data={filteredProducts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item, index }) => renderItem({ item, index })}
+        refreshControl={
+          <RefreshControl
+            refreshing={isLoading}
+            onRefresh={refetch}
+            colors={[theme.color.primary.dark]}
+            tintColor={theme.color.primary.dark}
+          />
+        }
+        ListEmptyComponent={!isLoading && filteredProducts.length === 0 ? <EmptyList text='No hay productos que mostrar' /> : <></>}
       />
-      <Button text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')}/>
+      <Button text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
     </Wrapper>
   )
 }

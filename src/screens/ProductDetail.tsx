@@ -1,14 +1,20 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useNavigation } from '@react-navigation/native'
+import { format } from 'date-fns'
+import { product } from 'mocks/product'
 import { DeleteProductSheet, Wrapper } from '@/components'
 import { Button } from '@/ui'
-import { product } from 'mocks/product'
 import { theme } from '@/styles'
-import { parseDate } from '@/utils'
 import useToggle from '@/hooks/useToogle'
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductDetail'>;
+
 const ProductDetail = () => {
+  const navigation = useNavigation<NavigationProp>();
   const { isOpen, toggler } = useToggle()
+
   return (
     <>
       <Wrapper>
@@ -39,15 +45,15 @@ const ProductDetail = () => {
           </View>
           <View style={styles.form_section}>
             <Text style={styles.label}>Fecha de lanzamiento:</Text>
-            <Text style={styles.form_info}>{parseDate(product.date_release)}</Text>
+            <Text style={styles.form_info}>{format(new Date(product.date_release), 'dd/MM/yyyy')}</Text>
           </View>
           <View style={styles.form_section}>
             <Text style={styles.label}>Fecha de revisión:</Text>
-            <Text style={styles.form_info}>{parseDate(product.date_revision)}</Text>
+            <Text style={styles.form_info}>{format(new Date(product.date_revision), 'dd/MM/yyyy')}</Text>
           </View>
         </View>
         <View style={styles.actions}>
-          <Button text="Editar" />
+          <Button text="Editar" onPress={() => navigation.navigate('EditProduct')} />
           <Button text="Eliminar" variant='error' onPress={toggler} />
         </View>
       </Wrapper>

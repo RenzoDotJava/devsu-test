@@ -3,6 +3,7 @@ type InputProps = {
 	keyboardType?: 'default' | 'numeric';
 	value?: string;
 	error?: boolean;
+	disable?: boolean;
 	onChangeText?: (text: string) => void;
 };
 
@@ -19,3 +20,10 @@ type BottomSheetProps = {
 	onClose: () => void;
 	children?: React.ReactNode;
 }
+
+type DateTimePickerProps = {
+	value?: string;
+	error?: boolean;
+	disable?: boolean;
+	onChange?: (date: string) => void;
+};

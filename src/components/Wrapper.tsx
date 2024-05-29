@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 20,
-    paddingVertical: 48,
+    paddingVertical: 24,
     backgroundColor: theme.color.neutral.lightest,
   }
 })

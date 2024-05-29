@@ -27,6 +27,7 @@ export const theme = {
       dark: '#37373B',
       darkest: '#000000'
     },
-    error: '#D50707'
+    error: '#D50707',
+    disabled: '#F6F6F6'
   }
 }

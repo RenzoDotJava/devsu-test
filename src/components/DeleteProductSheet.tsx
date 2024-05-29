@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { BottomSheet, Button } from '@/ui'
 import { theme } from '@/styles'
 
-const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, onClose, product }) => {
+const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, isLoading, product, onClose, onConfirm }) => {
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
       <View style={styles.content}>
@@ -12,8 +12,8 @@ const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, onClose
         </Text>
       </View>
       <View style={styles.actions}>
-        <Button text="Confirmar" variant="secondary" />
-        <Button text="Cancelar" />
+        <Button text="Confirmar" variant="secondary" onPress={onConfirm} loading={isLoading} />
+        <Button text="Cancelar" onPress={onClose} />
       </View>
     </BottomSheet>
   )

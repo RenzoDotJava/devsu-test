@@ -1,6 +1,6 @@
 type RootStackParamList = {
 	ProductList: undefined;
-	ProductDetail: undefined;
+	ProductDetail: { id: string };
 	AddProduct: undefined;
-	EditProduct: undefined;
+	EditProduct: { product: Product };
 };

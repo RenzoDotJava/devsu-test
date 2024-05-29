@@ -10,4 +10,4 @@ export const createMinMaxErrorMessage = (type: 'min' | 'max', value: number, nam
   return type === 'min' ? `${name} debe tener al menos ${value} caracteres!` : `${name} debe tener como máximo ${value} caracteres!`
 }
 
-export const REQUIRED_ERROR_MESSASGE = 'Este campo es requerido!';
+export const REQUIRED_ERROR_MESSAGE = 'Este campo es requerido!';

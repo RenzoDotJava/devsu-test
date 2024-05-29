@@ -4,6 +4,7 @@ type HeaderProps = {
 
 type WrapperProps = {
 	children: React.ReactNode
+	isLoading?: boolean
 }
 
 type ProductRowProps = {
@@ -18,6 +19,12 @@ type ProductFormProps = {
 	isLoading?: boolean;
 };
 
+type EmptyListProps = {
+	text?: string;
+}
+
 type DeleteProductSheetProps = BottomSheetProps & {
 	product: Product;
+	isLoading?: boolean;
+	onConfirm?: () => void;
 }

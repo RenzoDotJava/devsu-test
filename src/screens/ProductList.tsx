@@ -31,7 +31,7 @@ const ProductList = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item, index }) => renderItem({ item, index })}
       />
-      <Button text="Agregar" variant='secondary' />
+      <Button text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')}/>
     </Wrapper>
   )
 }

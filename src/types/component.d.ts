@@ -12,6 +12,12 @@ type ProductRowProps = {
 	onPress: () => void;
 }
 
+type ProductFormProps = {
+	product?: Product;
+	action?: (req: Product) => void;
+	isLoading?: boolean;
+};
+
 type DeleteProductSheetProps = BottomSheetProps & {
 	product: Product;
 }

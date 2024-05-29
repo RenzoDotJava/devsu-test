@@ -1,7 +1,8 @@
 import { HttpService } from "./http.service";
-import { Apis } from "../enums/Apis";
+import { serverUrl } from "../config";
 
-class ProductService {
+
+export class ProductService {
   private httpService: HttpService;
 
   constructor(api: string) {
@@ -45,4 +46,4 @@ class ProductService {
   }
 }
 
-export const productService = new ProductService(Apis.PRODUCTS);
+export const productService = new ProductService(serverUrl + '/bp/products');

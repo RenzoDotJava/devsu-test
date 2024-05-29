@@ -4,6 +4,7 @@ type InputProps = {
 	value?: string;
 	error?: boolean;
 	disable?: boolean;
+	testId?: string;
 	onChangeText?: (text: string) => void;
 };
 
@@ -13,6 +14,7 @@ type ButtonProps = {
 	onPress?: () => void;
 	disabled?: boolean;
 	loading?: boolean;
+	testId?: string;
 };
 
 type BottomSheetProps = {
@@ -25,5 +27,6 @@ type DateTimePickerProps = {
 	value?: string;
 	error?: boolean;
 	disable?: boolean;
+	testId?: string;
 	onChange?: (date: string) => void;
 };

@@ -7,6 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   loading = false,
   variant = 'primary',
+  testId = '',
   onPress
 }) => {
 
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
       style={StyleSheet.compose(styles.button, styles[`button_${variant}`])}
       onPress={onPress}
       disabled={disabled || loading}
+      testID={testId}
     >
       {!loading ? (
         <Text

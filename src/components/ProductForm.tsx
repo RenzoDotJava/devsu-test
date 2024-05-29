@@ -92,26 +92,31 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
           control={control}
           name='id'
           disable={product !== undefined}
+          testId='form-product-id'
         />
         <FormInput
           label='Nombre'
           control={control}
           name='name'
+          testId='form-product-name'
         />
         <FormInput
           label='Descripción'
           control={control}
           name='description'
+          testId='form-product-description'
         />
         <FormInput
           label='Logo'
           control={control}
           name='logo'
+          testId='form-product-logo'
         />
         <FormDatePicker
           label='Fecha Liberación'
           control={control}
           name='date_release'
+          testId='form-product-date-release'
         />
         <FormDatePicker
           label='Fecha Revisión'
@@ -121,7 +126,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
         />
       </ScrollView>
       <View style={styles.actions}>
-        <Button text='Enviar' variant='secondary' onPress={handleSubmit(onSubmit)} loading={isLoading && isValidating} />
+        <Button text='Enviar' variant='secondary' testId='form-submit-button' onPress={handleSubmit(onSubmit)} loading={isLoading && isValidating} />
         <Button text='Reiniciar' onPress={() => product ? reset(product) : reset()} />
       </View>
     </View>

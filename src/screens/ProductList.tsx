@@ -37,7 +37,7 @@ const ProductList = () => {
 
   return (
     <Wrapper>
-      <Input placeholder='Search...' value={query} onChangeText={handleChangeQuery} />
+      <Input testId='input-search' placeholder='Search...' value={query} onChangeText={handleChangeQuery} />
       <FlatList
         style={styles.list}
         data={filteredProducts}
@@ -53,7 +53,7 @@ const ProductList = () => {
         }
         ListEmptyComponent={<EmptyList text='No hay productos que mostrar' />}
       />
-      <Button text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
+      <Button testId='add-product-navigator' text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
     </Wrapper>
   )
 }

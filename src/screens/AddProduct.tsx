@@ -2,9 +2,9 @@ import React from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useNavigation } from '@react-navigation/native'
-import { ProductForm, Wrapper } from '@/components'
-import { productService } from '@/services/product.service'
-import { useProduct } from '@/context/ProductContext'
+import { ProductForm, Wrapper } from '../components'
+import { productService } from '../services/product.service'
+import { useProduct } from '../context/ProductContext'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'AddProduct'>;
 

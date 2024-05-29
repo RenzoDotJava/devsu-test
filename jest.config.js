@@ -3,6 +3,7 @@ const { defaults: tsjPreset } = require("ts-jest/jest-preset")
 module.exports = {
 	...tsjPreset,
 	preset: "jest-expo",
+	testEnvironment: 'jsdom',
 	globals: {
 		"ts-jest": {
 			babelConfig: true,

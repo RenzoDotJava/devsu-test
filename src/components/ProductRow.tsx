@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
-import { theme } from '@/styles';
+import { theme } from '../styles';
 
 const ProductRow: React.FC<ProductRowProps> = ({ product, position, onPress }) => {
 

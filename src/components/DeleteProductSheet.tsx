@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { BottomSheet, Button } from '@/ui'
-import { theme } from '@/styles'
+import { BottomSheet, Button } from '../ui'
+import { theme } from '../styles'
 
 const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, isLoading, product, onClose, onConfirm }) => {
   return (

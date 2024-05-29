@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
-import { theme } from '@/styles'
+import { theme } from '../styles'
 
 const Header: React.FC<HeaderProps> = ({ onPress }) => {
   return (

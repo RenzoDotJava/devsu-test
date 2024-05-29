@@ -1,5 +1,5 @@
 import { HttpService } from "./http.service";
-import { Apis } from "@/enums/Apis";
+import { Apis } from "../enums/Apis";
 
 class ProductService {
   private httpService: HttpService;

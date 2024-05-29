@@ -4,9 +4,9 @@ import { default as DatePickerRN, DateTimePickerEvent } from '@react-native-comm
 import { format } from 'date-fns';
 import { View } from 'react-native';
 import { Controller, FieldError } from 'react-hook-form';
-import useToggle from '@/hooks/useToogle'
-import { theme } from '@/styles';
-import { type FormControllerProps } from '@/types/form';
+import useToggle from '../hooks/useToogle'
+import { theme } from '../styles';
+import { type FormControllerProps } from '../types/form';
 
 const DatePicker: React.FC<DateTimePickerProps> = ({ value, onChange = () => { }, error = false, disable = false }) => {
   const { isOpen, toggler } = useToggle()

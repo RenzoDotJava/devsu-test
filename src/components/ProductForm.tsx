@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from '@tanstack/react-query';
 import { z } from "zod"
 import { addYears, format } from 'date-fns';
-import { Button } from '@/ui';
-import { theme } from '@/styles';
-import { FormInput } from '@/ui/Input';
-import { FormDatePicker } from '@/ui/DatePicker';
-import { compareDate, createMinMaxErrorMessage, REQUIRED_ERROR_MESSAGE } from '@/utils';
-import { productService } from '@/services/product.service';
+import { Button } from '../ui';
+import { theme } from '../styles';
+import { FormInput } from '../ui/Input';
+import { FormDatePicker } from '../ui/DatePicker';
+import { compareDate, createMinMaxErrorMessage, REQUIRED_ERROR_MESSAGE } from '../utils';
+import { productService } from '../services/product.service';
 
 const formSchema = z.object({
   id: z.string({

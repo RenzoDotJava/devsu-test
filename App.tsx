@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ProductProvider from '@/context/ProductContext';
+import ProductProvider from './src/context/ProductContext';
 import Navigator from './src';
 
 export default function App() {

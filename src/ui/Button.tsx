@@ -1,6 +1,6 @@
-import { theme } from '@/styles';
 import React from 'react'
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { theme } from '../styles';
 
 const Button: React.FC<ButtonProps> = ({
   text,

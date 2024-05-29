@@ -2,7 +2,7 @@ import React from 'react'
 import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native'
 import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
 import { AntDesign } from '@expo/vector-icons';
-import { theme } from '@/styles';
+import { theme } from '../styles';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

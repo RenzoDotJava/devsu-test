@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { theme } from "@/styles";
 import { Controller, FieldError } from "react-hook-form";
-import { type FormControllerProps } from "@/types/form";
+import { theme } from "../styles";
+import { type FormControllerProps } from "../types/form";
 
 const Input: React.FC<InputProps> = ({
 	placeholder,

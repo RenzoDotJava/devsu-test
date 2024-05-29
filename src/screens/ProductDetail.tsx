@@ -4,12 +4,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
-import { DeleteProductSheet, Wrapper } from '@/components'
-import { Button } from '@/ui'
-import { theme } from '@/styles'
-import useToggle from '@/hooks/useToogle'
-import { productService } from '@/services/product.service'
-import { useProduct } from '@/context/ProductContext'
+import { DeleteProductSheet, Wrapper } from '../components'
+import { Button } from '../ui'
+import { theme } from '../styles'
+import useToggle from '../hooks/useToogle'
+import { productService } from '../services/product.service'
+import { useProduct } from '../context/ProductContext'
 
 type ProductDetailScreenRouteProp = RouteProp<RootStackParamList, 'ProductDetail'>;
 

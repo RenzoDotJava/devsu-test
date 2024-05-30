@@ -11,8 +11,6 @@ export const createMinMaxErrorMessage = (type: 'min' | 'max', value: number, nam
   return type === 'min' ? `${name} debe tener al menos ${value} caracteres!` : `${name} debe tener como máximo ${value} caracteres!`
 }
 
-export const REQUIRED_ERROR_MESSAGE = 'Este campo es requerido!';
-
 export const createDateTimeSetEvtParams = (
   date: Date
 ): [DateTimePickerEvent, Date] => {
@@ -24,3 +22,6 @@ export const createDateTimeSetEvtParams = (
     date,
   ];
 };
+
+export const REQUIRED_ERROR_MESSAGE = 'Este campo es requerido!';
+export const DEFAULT_RESPONSE_ERROR = 'Hubo un error!';

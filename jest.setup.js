@@ -33,13 +33,13 @@ const getProductResponse = (req, res) => {
 
     return Promise.resolve({
       ok: true,
-      status: 201,
+      status: 200,
       json: async () => ({ data: body }),
     });
   } else if (method === 'DELETE') {
     return Promise.resolve({
       ok: true,
-      status: 204,
+      status: 200,
       json: async () => ({}),
     });
   } else if (method === 'PUT') {

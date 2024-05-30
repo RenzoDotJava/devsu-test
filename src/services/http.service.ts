@@ -1,3 +1,5 @@
+import { DEFAULT_RESPONSE_ERROR } from "../utils";
+
 export class HttpService {
   private baseUrl: string;
 
@@ -6,9 +8,16 @@ export class HttpService {
   }
 
   async get({ url }: HttpProps) {
+
     const res = await fetch(this.baseUrl + url, {
       method: 'GET'
     });
+
+    if (!res.ok) {
+      const error = JSON.parse(await res.text());
+
+      throw new Error(error.message || DEFAULT_RESPONSE_ERROR);
+    }
 
     return res.json();
   }
@@ -24,6 +33,12 @@ export class HttpService {
       },
     });
 
+    if (!res.ok) {
+      const error = JSON.parse(await res.text());
+
+      throw new Error(error.message || DEFAULT_RESPONSE_ERROR);
+    }
+
     return res.json();
   }
 
@@ -38,6 +53,12 @@ export class HttpService {
       },
     });
 
+    if (!res.ok) {
+      const error = JSON.parse(await res.text());
+
+      throw new Error(error.message || DEFAULT_RESPONSE_ERROR);
+    }
+
     return res.json();
   }
 
@@ -46,6 +67,12 @@ export class HttpService {
     const res = await fetch(this.baseUrl + url, {
       method: 'DELETE',
     });
+
+    if (!res.ok) {
+      const error = JSON.parse(await res.text());
+
+      throw new Error(error.message || DEFAULT_RESPONSE_ERROR);
+    }
 
     return res.json();
   }

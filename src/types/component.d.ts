@@ -5,6 +5,7 @@ type HeaderProps = {
 type WrapperProps = {
 	children: React.ReactNode
 	isLoading?: boolean
+	error?: string | null
 }
 
 type ProductRowProps = {

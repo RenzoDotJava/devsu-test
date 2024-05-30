@@ -8,7 +8,7 @@ import { theme } from '../styles'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const Wrapper: React.FC<WrapperProps> = ({ children, isLoading = false }) => {
+const Wrapper: React.FC<WrapperProps> = ({ children, isLoading = false, error = null }) => {
   const navigation = useNavigation<NavigationProp>();
 
   return (
@@ -16,7 +16,12 @@ const Wrapper: React.FC<WrapperProps> = ({ children, isLoading = false }) => {
       <Header onPress={() => navigation.navigate('ProductList')} />
       <View style={StyleSheet.compose(styles.flexible, styles.container)}>
         {!isLoading ?
-          children :
+          !error ? children :
+            <View style={styles.error_container}>
+              <Text style={styles.error_title}>Error</Text>
+              <Text style={styles.error_message}>{error}</Text>
+            </View>
+          :
           <View style={styles.loading}>
             <ActivityIndicator color={theme.color.primary.dark} size={60} />
             <Text style={styles.loading_text}>
@@ -51,5 +56,18 @@ const styles = StyleSheet.create({
     color: theme.color.neutral.dark,
     marginTop: 10,
     fontSize: theme.fontSize.lg
+  },
+  error_container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8
+  },
+  error_title: {
+    fontSize: theme.fontSize['2xl'],
+    fontWeight: '500'
+  },
+  error_message: {
+    fontSize: theme.fontSize.md
   }
 })

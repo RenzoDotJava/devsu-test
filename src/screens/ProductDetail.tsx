@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
@@ -21,13 +21,22 @@ const ProductDetail = () => {
   const { isOpen, toggler } = useToggle()
   const { deleteProductById } = useProduct()
 
+  const [error, setError] = useState<string | null>(null)
+
   const { data: product, isLoading } = useQuery({
     queryKey: ['get_product', id],
     queryFn: async () => {
-      const data = await productService.getProductById(id)
+      try {
+        const data = await productService.getProductById(id)
 
-      return data
-    }
+        return data
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message)
+        }
+      }
+      return null
+    },
   })
 
   const { mutate, isPending } = useMutation({
@@ -42,7 +51,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Wrapper isLoading={isLoading}>
+      <Wrapper isLoading={isLoading} error={error}>
         {product ?
           <>
             <View>

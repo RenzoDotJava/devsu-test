@@ -51,7 +51,7 @@ const ProductList = () => {
             tintColor={theme.color.primary.dark}
           />
         }
-        ListEmptyComponent={<EmptyList text='No hay productos que mostrar' />}
+        ListEmptyComponent={!isLoading ? <EmptyList text='No hay productos que mostrar' /> : <></>}
       />
       <Button testId='add-product-navigator' text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
     </Wrapper>

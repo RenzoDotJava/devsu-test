@@ -10,9 +10,7 @@ export const renderWithProviders = (children: React.ReactNode) => {
   return render(
     <QueryClientProvider client={queryClient}>
       <ProductProvider>
-        {/* <NavigationContainer> */}
-          {children}
-        {/* </NavigationContainer> */}
+        {children}
       </ProductProvider>
     </QueryClientProvider>
   )

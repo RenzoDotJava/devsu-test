@@ -82,7 +82,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
   })
 
   const onSubmit = (data: z.infer<typeof formSchema>) => mutate(data)
-
+  
   return (
     <View style={styles.flexible}>
       <Text style={styles.title}>Formulario de Registro</Text>
@@ -122,12 +122,13 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
           label='Fecha Revisión'
           control={control}
           name='date_revision'
-          disable
+          testId='form-product-date-revision'
+          disabled
         />
       </ScrollView>
       <View style={styles.actions}>
         <Button text='Enviar' variant='secondary' testId='form-submit-button' onPress={handleSubmit(onSubmit)} loading={isLoading && isValidating} />
-        <Button text='Reiniciar' onPress={() => product ? reset(product) : reset()} />
+        <Button text='Reiniciar' testId='form-reset-button' onPress={() => product ? reset(product) : reset()} />
       </View>
     </View>
   )

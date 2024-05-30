@@ -26,7 +26,7 @@ type BottomSheetProps = {
 type DateTimePickerProps = {
 	value?: string;
 	error?: boolean;
-	disable?: boolean;
+	disabled?: boolean;
 	testId?: string;
 	onChange?: (date: string) => void;
 };

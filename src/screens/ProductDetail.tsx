@@ -23,7 +23,11 @@ const ProductDetail = () => {
 
   const { data: product, isLoading } = useQuery({
     queryKey: ['get_product', id],
-    queryFn: async () => productService.getProductById(id)
+    queryFn: async () => {
+      const data = await productService.getProductById(id)
+
+      return data
+    }
   })
 
   const { mutate, isPending } = useMutation({
@@ -58,8 +62,9 @@ const ProductDetail = () => {
                 <Text style={styles.label}>Logo</Text>
                 <View style={styles.logo_container}>
                   <Image
+                    testID='product-logo'
                     source={{
-                      uri: product.logo,
+                      uri: product.logo
                     }}
                     style={styles.logo}
                     resizeMode='contain'
@@ -76,8 +81,8 @@ const ProductDetail = () => {
               </View>
             </View>
             <View style={styles.actions}>
-              <Button text="Editar" onPress={() => navigation.navigate('EditProduct', { product })} />
-              <Button text="Eliminar" variant='error' onPress={toggler} />
+              <Button text="Editar" testId='edit-product-button' onPress={() => navigation.navigate('EditProduct', { product })} />
+              <Button text="Eliminar" testId='delete-product-sheet-button' variant='error' onPress={toggler} />
             </View>
           </> : null}
       </Wrapper>

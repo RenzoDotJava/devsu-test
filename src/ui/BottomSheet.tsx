@@ -11,14 +11,14 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
     <>
       {
         isOpen ? <>
-          <AnimatedPressable style={styles.backdrop} onPress={onClose} entering={FadeIn} exiting={FadeOut} />
+          <AnimatedPressable testID='close-bottom-sheet-backdrop' style={styles.backdrop} onPress={onClose} entering={FadeIn} exiting={FadeOut} />
           <Animated.View
             style={styles.container}
             entering={SlideInDown}
             exiting={SlideOutDown}
           >
             <View style={styles.header}>
-              <TouchableOpacity onPress={onClose}>
+              <TouchableOpacity testID='close-bottom-sheet-button' onPress={onClose}>
                 <AntDesign name="close" size={theme.fontSize.xl} color={theme.color.neutral.light} />
               </TouchableOpacity>
             </View>

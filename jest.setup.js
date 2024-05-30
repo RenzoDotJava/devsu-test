@@ -1,17 +1,56 @@
-/* import 'react-native-url-polyfill/auto'
-import { queryClient } from "./src/mocks/render-with-providers"
-import { server } from "./src/mocks/server" */
+import { product } from "./src/mocks/product";
+import { serverUrl } from "./src/config";
 
-/* global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve({ data: 'mocked data' }),
-  })
-); */
+global.fetch = jest.fn((req, res) => getProductResponse(req, res));
 
-/* beforeAll(() => server.listen({ onUnhandledRequest: 'bypass' }))
+const getProductResponse = (req, res) => {
+  const method = res?.method || 'GET';
 
-beforeEach(() => queryClient.clear())
+  if (method === 'GET') {
+    if (req.includes('/bp/products/verification')) {
+      const id = req.split('/').pop();
 
-afterEach(() => server.resetHandlers())
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => (product.id === id),
+      })
+    } else if (req === serverUrl + '/bp/products') {
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => ({ data: [product] }),
+      });
+    } else {
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => (product),
+      });
+    }
+  } else if (method === 'POST') {
+    const body = res?.body ? JSON.parse(res.body) : null;
 
-afterAll(() => server.close()) */
+    return Promise.resolve({
+      ok: true,
+      status: 201,
+      json: async () => ({ data: body }),
+    });
+  } else if (method === 'DELETE') {
+    return Promise.resolve({
+      ok: true,
+      status: 204,
+      json: async () => ({}),
+    });
+  } else if (method === 'PUT') {
+    const body = res?.body ? JSON.parse(res.body) : null;
+
+    return Promise.resolve({
+      ok: true,
+      status: 200,
+      json: async () => ({ data: body }),
+    });
+  }
+
+  return Promise.reject(new Error('Unsupported method or URL'));
+}

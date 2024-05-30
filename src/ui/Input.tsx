@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { theme } from "@/styles";
 import { Controller, FieldError } from "react-hook-form";
-import { type FormControllerProps } from "@/types/form";
+import { theme } from "../styles";
+import { type FormControllerProps } from "../types/form";
 
 const Input: React.FC<InputProps> = ({
 	placeholder,
@@ -10,6 +10,7 @@ const Input: React.FC<InputProps> = ({
 	value,
 	disable = false,
 	error = false,
+	testId = ''
 }) => {
 
 	const getInputStyle = () => {
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = ({
 	return (
 		<View style={StyleSheet.compose(styles.container, getInputStyle())}>
 			<TextInput
+				testID={testId}
 				style={[styles.input, disable && styles.disabled_input]}
 				keyboardType={keyboardType}
 				placeholder={placeholder}
@@ -38,7 +40,8 @@ export const FormInput: React.FC<FormControllerProps & InputProps> = ({
 	label = '',
 	placeholder,
 	disable = false,
-	keyboardType = 'default'
+	keyboardType = 'default',
+	testId = ''
 }) => {
 
 	const renderItem = (
@@ -54,6 +57,7 @@ export const FormInput: React.FC<FormControllerProps & InputProps> = ({
 				onChangeText={onChange}
 				error={!!error}
 				disable={disable}
+				testId={testId}
 			/>
 			{error && <Text style={styles.text_error}>{error.message}</Text>}
 		</>

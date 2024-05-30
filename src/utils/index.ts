@@ -1,3 +1,4 @@
+import { DateTimePickerEvent } from "@react-native-community/datetimepicker"
 import { format, isAfter, isEqual } from "date-fns"
 
 export const compareDate = (date: string): boolean => {
@@ -11,3 +12,15 @@ export const createMinMaxErrorMessage = (type: 'min' | 'max', value: number, nam
 }
 
 export const REQUIRED_ERROR_MESSAGE = 'Este campo es requerido!';
+
+export const createDateTimeSetEvtParams = (
+  date: Date
+): [DateTimePickerEvent, Date] => {
+  return [
+    {
+      type: 'set',
+      nativeEvent: { timestamp: date.getTime() },
+    },
+    date,
+  ];
+};

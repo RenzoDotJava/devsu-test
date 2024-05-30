@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from './Header'
-import { theme } from '@/styles'
+import { theme } from '../styles'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 

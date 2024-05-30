@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { BottomSheet, Button } from '@/ui'
-import { theme } from '@/styles'
+import { BottomSheet, Button } from '../ui'
+import { theme } from '../styles'
 
 const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, isLoading, product, onClose, onConfirm }) => {
   return (
@@ -12,8 +12,8 @@ const DeleteProductSheet: React.FC<DeleteProductSheetProps> = ({ isOpen, isLoadi
         </Text>
       </View>
       <View style={styles.actions}>
-        <Button text="Confirmar" variant="secondary" onPress={onConfirm} loading={isLoading} />
-        <Button text="Cancelar" onPress={onClose} />
+        <Button text="Confirmar" testId='confirm-delete-product-button' variant="secondary" onPress={onConfirm} loading={isLoading} />
+        <Button text="Cancelar" testId='cancel-delete-product-button' onPress={onClose} />
       </View>
     </BottomSheet>
   )

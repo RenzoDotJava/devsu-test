@@ -4,11 +4,11 @@ import { default as DatePickerRN, DateTimePickerEvent } from '@react-native-comm
 import { format } from 'date-fns';
 import { View } from 'react-native';
 import { Controller, FieldError } from 'react-hook-form';
-import useToggle from '@/hooks/useToogle'
-import { theme } from '@/styles';
-import { type FormControllerProps } from '@/types/form';
+import useToggle from '../hooks/useToogle'
+import { theme } from '../styles';
+import { type FormControllerProps } from '../types/form';
 
-const DatePicker: React.FC<DateTimePickerProps> = ({ value, onChange = () => { }, error = false, disable = false }) => {
+const DatePicker: React.FC<DateTimePickerProps> = ({ value, onChange = () => { }, error = false, disabled = false, testId }) => {
   const { isOpen, toggler } = useToggle()
 
   const handleChangeDate = (event: DateTimePickerEvent, date?: Date) => {
@@ -18,18 +18,19 @@ const DatePicker: React.FC<DateTimePickerProps> = ({ value, onChange = () => { }
   };
 
   const getInputStyle = () => {
-    if (disable) return [styles.disabled_container, styles.default_container];
+    if (disabled) return [styles.disabled_container, styles.default_container];
     else if (error) return styles.error_container;
     return styles.default_container;
   }
 
   return (
     <>
-      <TouchableOpacity style={StyleSheet.compose(styles.container, getInputStyle())} onPress={toggler}>
-        <Text style={[styles.input, disable && styles.disabled_input]}>{format(value!!, 'dd/MM/yyyy')}</Text>
+      <TouchableOpacity disabled={disabled} testID={testId} style={StyleSheet.compose(styles.container, getInputStyle())} onPress={toggler}>
+        <Text style={[styles.input, disabled && styles.disabled_input]}>{format(value!!, 'dd/MM/yyyy')}</Text>
       </TouchableOpacity>
       {isOpen &&
         <DatePickerRN
+          testID='date-picker'
           mode="date"
           value={new Date(value!!)}
           display='spinner'
@@ -45,7 +46,8 @@ export const FormDatePicker: React.FC<FormControllerProps & DateTimePickerProps>
   control,
   name,
   label = '',
-  disable = false
+  disabled = false,
+  testId = ''
 }) => {
 
   const renderItem = (
@@ -58,7 +60,8 @@ export const FormDatePicker: React.FC<FormControllerProps & DateTimePickerProps>
         value={value}
         onChange={onChange}
         error={!!error}
-        disable={disable}
+        disabled={disabled}
+        testId={testId}
       />
       {error && <Text style={styles.text_error}>{error.message}</Text>}
     </>

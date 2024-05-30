@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useNavigation } from '@react-navigation/native'
-import { EmptyList, ProductRow, Wrapper } from '@/components'
-import { Button, Input } from '@/ui'
+import { EmptyList, ProductRow, Wrapper } from '../components'
+import { Button, Input } from '../ui'
 import { useQuery } from '@tanstack/react-query'
-import { productService } from '@/services/product.service'
-import { useProduct } from '@/context/ProductContext'
-import { theme } from '@/styles'
+import { productService } from '../services/product.service'
+import { useProduct } from '../context/ProductContext'
+import { theme } from '../styles'
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductList'>;
 
@@ -37,7 +37,7 @@ const ProductList = () => {
 
   return (
     <Wrapper>
-      <Input placeholder='Search...' value={query} onChangeText={handleChangeQuery} />
+      <Input testId='input-search' placeholder='Search...' value={query} onChangeText={handleChangeQuery} />
       <FlatList
         style={styles.list}
         data={filteredProducts}
@@ -51,9 +51,9 @@ const ProductList = () => {
             tintColor={theme.color.primary.dark}
           />
         }
-        ListEmptyComponent={!isLoading && filteredProducts.length === 0 ? <EmptyList text='No hay productos que mostrar' /> : <></>}
+        ListEmptyComponent={<EmptyList text='No hay productos que mostrar' />}
       />
-      <Button text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
+      <Button testId='add-product-navigator' text="Agregar" variant='secondary' onPress={() => navigation.navigate('AddProduct')} />
     </Wrapper>
   )
 }

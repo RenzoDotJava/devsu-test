@@ -1,6 +1,6 @@
-import { theme } from '@/styles'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { theme } from '../styles'
 
 const EmptyList: React.FC<EmptyListProps> = ({ text = '' }) => {
   return (

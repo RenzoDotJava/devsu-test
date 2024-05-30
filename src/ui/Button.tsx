@@ -1,12 +1,13 @@
-import { theme } from '@/styles';
 import React from 'react'
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { theme } from '../styles';
 
 const Button: React.FC<ButtonProps> = ({
   text,
   disabled = false,
   loading = false,
   variant = 'primary',
+  testId = '',
   onPress
 }) => {
 
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
       style={StyleSheet.compose(styles.button, styles[`button_${variant}`])}
       onPress={onPress}
       disabled={disabled || loading}
+      testID={testId}
     >
       {!loading ? (
         <Text

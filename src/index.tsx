@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProductList, ProductDetail, AddProduct, EditProduct } from '@/screens';
+import { ProductList, ProductDetail, AddProduct, EditProduct } from './screens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

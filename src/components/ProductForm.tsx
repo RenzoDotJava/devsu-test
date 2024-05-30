@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from '@tanstack/react-query';
 import { z } from "zod"
 import { addYears, format } from 'date-fns';
-import { Button } from '@/ui';
-import { theme } from '@/styles';
-import { FormInput } from '@/ui/Input';
-import { FormDatePicker } from '@/ui/DatePicker';
-import { compareDate, createMinMaxErrorMessage, REQUIRED_ERROR_MESSAGE } from '@/utils';
-import { productService } from '@/services/product.service';
+import { Button } from '../ui';
+import { theme } from '../styles';
+import { FormInput } from '../ui/Input';
+import { FormDatePicker } from '../ui/DatePicker';
+import { compareDate, createMinMaxErrorMessage, REQUIRED_ERROR_MESSAGE } from '../utils';
+import { productService } from '../services/product.service';
 
 const formSchema = z.object({
   id: z.string({
@@ -82,7 +82,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
   })
 
   const onSubmit = (data: z.infer<typeof formSchema>) => mutate(data)
-
+  
   return (
     <View style={styles.flexible}>
       <Text style={styles.title}>Formulario de Registro</Text>
@@ -92,37 +92,43 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, action, isLoading })
           control={control}
           name='id'
           disable={product !== undefined}
+          testId='form-product-id'
         />
         <FormInput
           label='Nombre'
           control={control}
           name='name'
+          testId='form-product-name'
         />
         <FormInput
           label='Descripción'
           control={control}
           name='description'
+          testId='form-product-description'
         />
         <FormInput
           label='Logo'
           control={control}
           name='logo'
+          testId='form-product-logo'
         />
         <FormDatePicker
           label='Fecha Liberación'
           control={control}
           name='date_release'
+          testId='form-product-date-release'
         />
         <FormDatePicker
           label='Fecha Revisión'
           control={control}
           name='date_revision'
-          disable
+          testId='form-product-date-revision'
+          disabled
         />
       </ScrollView>
       <View style={styles.actions}>
-        <Button text='Enviar' variant='secondary' onPress={handleSubmit(onSubmit)} loading={isLoading && isValidating} />
-        <Button text='Reiniciar' onPress={() => product ? reset(product) : reset()} />
+        <Button text='Enviar' variant='secondary' testId='form-submit-button' onPress={handleSubmit(onSubmit)} loading={isLoading && isValidating} />
+        <Button text='Reiniciar' testId='form-reset-button' onPress={() => product ? reset(product) : reset()} />
       </View>
     </View>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
-import { theme } from '@/styles';
+import { theme } from '../styles';
 
 const ProductRow: React.FC<ProductRowProps> = ({ product, position, onPress }) => {
 
@@ -19,7 +19,7 @@ const ProductRow: React.FC<ProductRowProps> = ({ product, position, onPress }) =
   }
 
   return (
-    <TouchableOpacity style={getRowStyle()} onPress={onPress}>
+    <TouchableOpacity testID={'product-row-' + product.id} style={getRowStyle()} onPress={onPress}>
       <View style={styles.content}>
         <Text style={styles.product_name}>{product.name}</Text>
         <Text style={styles.product_id}>ID: {product.id}</Text>

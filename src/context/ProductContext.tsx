@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const ProductContext = createContext<ProductContextProps>({
+export const ProductContext = createContext<ProductContextProps>({
   products: [],
   setProducts: () => { },
   addProduct: () => { },

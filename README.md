@@ -59,6 +59,11 @@ npm run start
 ```
 
 
+## Run Tests
+
+```bash
+npm run test
+```
 ## Authors
 
 - [@renzogbo](https://www.github.com/RenzoDotJava)

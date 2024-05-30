@@ -1,7 +1,10 @@
 import { product } from "./src/mocks/product";
 import { serverUrl } from "./src/config";
+import { queryClient } from "./src/mocks/render-with-providers"
 
 global.fetch = jest.fn((req, res) => getProductResponse(req, res));
+
+beforeEach(() => queryClient.clear())
 
 const getProductResponse = (req, res) => {
   const method = res?.method || 'GET';
